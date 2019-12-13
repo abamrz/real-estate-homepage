@@ -1,6 +1,7 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 from .models import Listing
+from listings.choices import price_choices, state_choices, bedroom_choices
 
 
 # Create your views here.
@@ -25,4 +26,35 @@ def listing(request, listing_id):
 
 
 def search(request):
-    return render(request, 'listings/search.html')
+    query = Listing.objects.order_by('-list_date')
+    if 'keywords' in request.GET:
+        keywords = request.GET['keywords']
+        if keywords:
+            query = query.filter(description__contains=keywords)
+
+    # City
+    if 'city' in request.GET:
+        city = request.GET['keywords']
+        if city:
+            query = query.filter(city__contains=city)
+
+    # State
+    if 'state' in request.GET:
+        state = request.GET['keywords']
+        if state:
+            query = query.filter(state__contains=state)
+
+    # Bedrooms
+    if 'bedrooms' in request.GET:
+        bedrooms = request.GET['keywords']
+        if bedrooms:
+            query = query.filter(bedroom_choices=bedrooms)
+
+    context = {
+        'state_choices': state_choices,
+        'price_choices': price_choices,
+        'bedrooms_choices': bedroom_choices,
+        'listing': query,
+        'values': request.GET
+    }
+    return render(request, 'listings/search.html', context)
