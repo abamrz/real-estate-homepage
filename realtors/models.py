@@ -7,10 +7,9 @@ class Realtor(models.Model):
     name = models.CharField(max_length=100)
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     description = models.CharField(max_length=200)
-    phone = models.IntegerField
     email = models.CharField(max_length=50)
     is_mvp = models.BooleanField(default=False)
     hire_date = models.DateTimeField(default=datetime.now, blank=True)
 
     def __str__(self):
-        return
+        return self.name

@@ -4,7 +4,7 @@ from .models import Realtor
 
 # Register your models here.
 class RealtorAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nme', 'is_mvp', 'email')
+    list_display = ('id', 'name', 'is_mvp', 'email')
     list_filter = ('is_mvp',)
     search_fields = ('name', 'is_mvp')
 
