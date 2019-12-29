@@ -60,11 +60,13 @@
                       </a>
                 </div>
               {% endif %}
+              {% if listing.photo_3 %}
             <div class="col-md-2">
               <a href="{{ listing.photo_3.url }}" data-lightbox="home-images">
                 <img src="{{ listing.photo_3.url }}" alt="" class="img-fluid">
               </a>
             </div>
+              {% endif %}
           </div>
           <!-- Fields -->
           <div class="row mb-5 fields">
