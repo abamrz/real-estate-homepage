@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load humanize %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    {% block title %} | Listings {% endblock %}
 </head>
 <body>
     {% block content %}

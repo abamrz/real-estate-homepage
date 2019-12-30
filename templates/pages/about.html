@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>About</title>
+     {% block title %} | About us {% endblock %}
 </head>
 <body>
-    {% load static %}
     {% block content %}
     <section id="showcase-inner" class="py-5 text-white">
     <div class="container">
